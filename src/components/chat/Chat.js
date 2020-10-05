@@ -8,10 +8,8 @@ import { useParams } from "react-router-dom";
 import { loadMessages } from "../../redux/actions/chat";
 
 function Chat() {
-  /**
-   * Хук редакса
-   */
   const dispatch = useDispatch();
+
   /**
    * Массив с сообщениями и его фильтрация  по запросу поиска
    */
@@ -27,7 +25,7 @@ function Chat() {
   /**
    * Данные о myId
    */
-  const myId = useSelector((state) => state.application.myId);
+  const myId = useSelector((state) => state.profile.myId);
   /**
    * Состояние загрузки сообщений
    */
@@ -37,7 +35,7 @@ function Chat() {
    */
   const opened = useParams().id;
   /**
-   *
+   * Загрузка чата открытого контакта
    */
   useEffect(() => {
     if (opened) {

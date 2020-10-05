@@ -8,12 +8,12 @@ import { scrollChatDown } from "../../utils/dom";
 
 export function loadMessages(myId, contactId) {
   return (dispatch) => {
-    dispatch({ type: "load/chat/started", payload: contactId });
+    dispatch({ type: "chat/load/started", payload: contactId });
     fetch(`http://151.248.117.7:8001/api/messages/${myId}/${contactId}`)
       .then((response) => response.json())
       .then((json) => {
         dispatch({
-          type: "load/chat/succeed",
+          type: "chat/load/succeed",
           payload: json,
         });
         scrollChatDown();
@@ -77,7 +77,7 @@ export function sentMessage(myId, contactId, content) {
 export function deletedMessage(messageId) {
   return (dispatch) => {
     dispatch({
-      type: "delete/message/started",
+      type: "message/delete/started",
     });
     fetch("http://151.248.117.7:8001/api/messages", {
       method: "DELETE",
@@ -90,24 +90,9 @@ export function deletedMessage(messageId) {
       .then((response) => response.json())
       .then((json) =>
         dispatch({
-          type: "delete/message/succeed",
+          type: "message/delete/succeed",
           payload: json,
         })
       );
   };
-}
-
-/**
- * Открытие и закрытие поисковика сообщений
- * @returns {{type: string}}
- */
-export function searchOpened() {
-  return { type: "open/search/toggle" };
-}
-
-/**
- * Поиск сообщений
- */
-export function searchMessages(inputValue) {
-  return { type: "searchRequest/messages/start", payload: inputValue };
 }

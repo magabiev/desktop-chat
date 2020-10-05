@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchContacts } from "../../redux/actions/contacts";
+import { searchContacts } from "../../redux/actions/application";
 
 function Search() {
   /**

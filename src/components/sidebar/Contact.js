@@ -3,13 +3,13 @@ import Avatar from "../profile/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMessages } from "../../redux/actions/chat";
 import CheckRead from "../chat/message/CheckRead";
-import moment from "moment";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import DropdownContact from "./DropdownContact";
 import { useParams, useHistory } from "react-router-dom";
+import dayjs from "dayjs";
 
-function Contact({ contact }) {
+function Contact({ contact: { _id, fullname, lastMessage, online } }) {
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -21,15 +21,15 @@ function Contact({ contact }) {
   /**
    * Данные о myId
    */
-  const myId = useSelector((state) => state.application.myId);
+  const myId = useSelector((state) => state.profile.myId);
 
   /**
    * Передача нужного id  и получение его сообщений и получение профиля контакта
    */
   const handleClickContact = () => {
-    if (contact._id !== opened) {
-      dispatch(loadMessages(myId, contact._id));
-      history.push(contact._id);
+    if (_id !== opened) {
+      dispatch(loadMessages(myId, _id));
+      history.push(_id);
     }
   };
 
@@ -39,26 +39,26 @@ function Contact({ contact }) {
    *
    */
   const classes = classNames("contact", {
-    "active-contact": opened === contact._id,
+    "active-contact": opened === _id,
   });
 
   return (
     <div className={classes} onClick={handleClickContact}>
-      <Avatar name={contact.fullname} online={contact.online} />
+      <Avatar name={fullname} online={online} />
       <div className="info">
-        <div className="name">{contact.fullname}</div>
+        <div className="name">{fullname}</div>
         <div className="last-message">
-          {contact._id === contact.lastMessage?.toUserId && (
-            <CheckRead read={contact.lastMessage.read} />
+          {_id === lastMessage?.toUserId && (
+            <CheckRead read={lastMessage.read} />
           )}
-          <div className="contact-content">{contact.lastMessage?.content}</div>
+          <div className="contact-content">{lastMessage?.content}</div>
         </div>
       </div>
       <div className="options">
         <span className="date-contact">
-          {moment(contact.lastMessage?.time).format("hh:mm")}
+          {dayjs(lastMessage?.time).format("hh:mm")}
         </span>
-        <DropdownContact contactId={contact._id} />
+        <DropdownContact contactId={_id} />
       </div>
     </div>
   );

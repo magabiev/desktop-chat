@@ -1,40 +1,33 @@
 import React from "react";
-import moment from "moment";
-import CheckRead from "./CheckRead";
+import Avatar from "../../profile/Avatar";
 import MessageDropdown from "./MessageDropdown";
-import { useDispatch } from "react-redux";
-import { receivedMessageId } from "../../../redux/actions/application";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import dayjs from "dayjs";
 
-function InboxMessage({ inboxMessage }) {
+function InboxMessage({ message }) {
   /**
-   *  Хук редакса
+   * Id кликнутого контакта
    */
-  const dispatch = useDispatch();
+  const opened = useParams().id;
   /**
-   * Для временного хранения id сооющения на который наведен курсор
+   * Данные о профиле кликнутого контакта
    */
-  const handleClick = () => {
-    // todo исрпавить на аутсайдклик
-    dispatch(receivedMessageId(inboxMessage._id));
-  };
-
-  //todo заменить момент на дай жс
+  const { fullname } = useSelector((state) =>
+    state.contacts.items.find((item) => {
+      return opened === item._id;
+    })
+  );
 
   return (
-    <div className="my-message-block margin" onClick={handleClick}>
+    <div className="message-block margin">
+      <Avatar size="small" name={fullname} />
       <div className="message">
-        {inboxMessage.content}
+        {message.content}
         <div className="date">
-          <div>{moment(inboxMessage.time).format("hh:mm")}</div>
-          {inboxMessage.sending ? (
-            <span className="timer">
-              <i className="material-icons ">timer</i>
-            </span>
-          ) : (
-            <CheckRead read={inboxMessage.read} />
-          )}
+          <div>{dayjs(message.time).format("hh:mm")}</div>
         </div>
-        <MessageDropdown messageId={inboxMessage._id} />
+        <MessageDropdown messageId={message._id} />
       </div>
     </div>
   );

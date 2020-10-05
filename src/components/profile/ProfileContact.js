@@ -9,18 +9,20 @@ import { profileToggled } from "../../redux/actions/application";
 import { useParams } from "react-router-dom";
 
 function ProfileContact() {
-  /**
-   * Хук редакса
-   */
   const dispatch = useDispatch();
+
   /**
    * Id кликнутого контакта
    */
   const opened = useParams().id;
+
   /**
    * Состояние открытия окна профиля
    */
-  const openProfile = useSelector((state) => state.application.openProfile);
+  const openProfile = useSelector(
+    (state) => state.application.openContactProfile
+  );
+
   /**
    * Данные о профиле кликнутого контакта
    */
@@ -38,9 +40,19 @@ function ProfileContact() {
   /**
    * Вызов функции открытия окна профиля при нажатии горячих клавиш
    */
-  useHotkeys("shift+p", () => dispatch(profileToggled()));
+  useHotkeys(
+    "shift+p",
+    () => {
+      dispatch(profileToggled());
+    },
+    {
+      filter: () => true,
+    }
+  );
 
-  //todo add comment
+  /**
+   * Вывод информации о профиле контакта если открыт чат и загрузка завершена
+   */
   if (loading || !opened) {
     return null;
   }

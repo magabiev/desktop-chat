@@ -25,7 +25,7 @@ function SendButtons({ hasMessage, onSend }) {
  */
 SendButtons.propTypes = {
   hasMessage: PropTypes.bool,
-  send: PropTypes.func.isRequired,
+  onSend: PropTypes.func.isRequired,
 };
 
 export default SendButtons;

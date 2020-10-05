@@ -7,13 +7,13 @@ const initialState = {
 
 export default function chat(state = initialState, action) {
   switch (action.type) {
-    case "load/chat/started":
+    case "chat/load/started":
       return {
         ...state,
         open: true,
         loading: true,
       };
-    case "load/chat/succeed":
+    case "chat/load/succeed":
       return {
         ...state,
         items: action.payload,
@@ -43,12 +43,12 @@ export default function chat(state = initialState, action) {
           return item;
         }),
       };
-    case "delete/message/started":
+    case "message/delete/started":
       return {
         ...state,
         deleting: true,
       };
-    case "delete/message/succeed":
+    case "message/delete/succeed":
       return {
         ...state,
         items: action.payload,

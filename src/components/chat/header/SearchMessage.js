@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchMessages, searchOpened } from "../../../redux/actions/chat";
+import {
+  searchMessages,
+  searchOpened,
+} from "../../../redux/actions/application";
 
 function SearchMessage() {
-  /**
-   * Хук редакса
-   */
   const dispatch = useDispatch();
   /**
    * Открытие и закрытие поисковика сообщений

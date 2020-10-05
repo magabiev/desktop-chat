@@ -44,7 +44,7 @@ function Header() {
       {loading ? (
         <Updating />
       ) : (
-        <Name name={profile.fullname} online={profile.online} />
+        <Name name={profile?.fullname} online={profile?.online} />
       )}
       <div className="profile-open">
         <i className="material-icons click" onClick={handleClick}>

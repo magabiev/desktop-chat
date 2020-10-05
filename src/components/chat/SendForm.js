@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { useDispatch, useSelector } from "react-redux";
 import { sentMessage } from "../../redux/actions/chat";
 import SendButtons from "./SendButtons";
 import FileButton from "./FileButton";
 import { useParams } from "react-router-dom";
+import { useHotkeys } from "react-hotkeys-hook";
 
 function SendForm() {
+  /**
+   * Значение поля ввода
+   */
+  const [content, setContent] = useState("");
   /**
    * Хук редакса
    */
@@ -14,7 +19,7 @@ function SendForm() {
   /**
    * Данные о myId
    */
-  const myId = useSelector((state) => state.application.myId);
+  const myId = useSelector((state) => state.profile.myId);
   /**
    * Id кликнутого контакта
    */
@@ -22,14 +27,10 @@ function SendForm() {
   /**
    * Отправка сообщения
    */
-  const sendMessage = () => {
+  const sendMessage = useCallback(() => {
     dispatch(sentMessage(myId, opened, content));
     clear();
-  };
-  /**
-   * Значение поля ввода
-   */
-  const [content, setContent] = useState("");
+  }, [content, opened, myId]);
   /**
    * Передача значения поля ввода в редакс
    */
@@ -43,7 +44,27 @@ function SendForm() {
     setContent("");
   };
 
-  //todo при нажатии на интер отправить сообщ, принажатии шифт+интер сделать перенос строки
+  /**
+   * Перенос строки при клике на shift+enter
+   */
+  useHotkeys("shift+enter", (event) => {
+    event.preventDefault();
+    setContent((content) => content + "\n");
+  });
+
+  /**
+   * Отправка сообщения при клике на Enter
+   */
+  useHotkeys(
+    "enter",
+    (e) => {
+      e.preventDefault();
+      if (content.length !== 0) {
+        sendMessage();
+      }
+    },
+    [content]
+  );
 
   return (
     <div className="form-block">

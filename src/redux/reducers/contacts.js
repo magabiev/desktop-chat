@@ -6,12 +6,12 @@ const initialState = {
 
 export default function contacts(state = initialState, action) {
   switch (action.type) {
-    case "load/sidebar/started":
+    case "contacts/load/started":
       return {
         ...state,
         loading: true,
       };
-    case "load/sidebar/succeed":
+    case "contacts/load/succeed":
       return {
         ...state,
         items: action.payload,

@@ -7,9 +7,9 @@ function Social({ socials }) {
       <span className="header-profile">Social</span>
       <div className="social-block">
         {socials &&
-          Object.keys(socials).map((social) => {
+          Object.keys(socials).map((social, index) => {
             return (
-              <div className="icons-social click">
+              <div key={index} className="icons-social click">
                 <i className={`fab fa-${social}`} /> {socials[social]}
               </div>
             );

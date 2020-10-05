@@ -1,15 +1,20 @@
 const initialState = {
-  profile: [],
+  myId: "",
+  loadingMyId: true,
 };
-
-//TODO изменить названия  тайпов экшенов
 
 export default function profile(state = initialState, action) {
   switch (action.type) {
-    case "get/item/succeed":
+    case "myProfile/load/started":
       return {
         ...state,
-        profile: action.payload,
+        loadingMyId: true,
+      };
+    case "myProfile/load/succeed":
+      return {
+        ...state,
+        myId: action.payload._id,
+        loadingMyId: false,
       };
     default:
       return state;

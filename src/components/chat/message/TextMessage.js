@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import InboxMessage from "./InboxMessage";
 import OutboxMessage from "./OutboxMessage";
+import InboxMessage from "./InboxMessage";
 
 function TextMessage({ message }) {
   /**
    * Данные о моем id
    */
-  const myId = useSelector((state) => state.application.myId);
+  const myId = useSelector((state) => state.profile.myId);
 
   /**
    * Проверка исходящее ли сообщение сообщение
@@ -17,9 +17,9 @@ function TextMessage({ message }) {
   const outgoing = myId === message.toUserId;
 
   if (!outgoing) {
-    return <InboxMessage inboxMessage={message} />;
+    return <OutboxMessage message={message} />;
   }
-  return <OutboxMessage outboxMessage={message} />;
+  return <InboxMessage message={message} />;
 }
 
 /**
