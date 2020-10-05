@@ -28,8 +28,10 @@ function SendForm() {
    * Отправка сообщения
    */
   const sendMessage = useCallback(() => {
-    dispatch(sentMessage(myId, opened, content));
-    clear();
+    if (content.length !== 0) {
+      dispatch(sentMessage(myId, opened, content));
+      clear();
+    }
   }, [content, opened, myId]);
   /**
    * Передача значения поля ввода в редакс
@@ -59,9 +61,7 @@ function SendForm() {
     "enter",
     (e) => {
       e.preventDefault();
-      if (content.length !== 0) {
-        sendMessage();
-      }
+      sendMessage();
     },
     [content]
   );

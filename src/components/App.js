@@ -17,7 +17,7 @@ function App() {
   }, [dispatch]);
 
   /**
-   *
+   * Состояние загрузки данных профиля
    */
   const loadingMyId = useSelector((state) => state.profile.loadingMyId);
 
@@ -25,11 +25,9 @@ function App() {
     !loadingMyId && (
       <BrowserRouter>
         <Route path="/:id?">
-          <>
-            <Sidebar />
-            <Chat />
-            <ProfileContact />
-          </>
+          <Sidebar />
+          <Chat />
+          <ProfileContact />
         </Route>
       </BrowserRouter>
     )
