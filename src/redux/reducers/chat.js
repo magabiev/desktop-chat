@@ -46,6 +46,7 @@ export default function chat(state = initialState, action) {
     case "message/delete/started":
       return {
         ...state,
+        items: state.items.filter((item) => item._id !== action.payload),
         deleting: true,
       };
     case "message/delete/succeed":

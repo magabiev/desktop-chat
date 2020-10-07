@@ -78,6 +78,7 @@ export function deletedMessage(messageId) {
   return (dispatch) => {
     dispatch({
       type: "message/delete/started",
+      payload: messageId,
     });
     fetch("http://151.248.117.7:8001/api/messages", {
       method: "DELETE",
