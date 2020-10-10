@@ -10,10 +10,6 @@ function Message({ message }) {
   return <InfoMessage content={message.content} />;
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- * @type {{message: Requireable<object>}}
- */
 Message.propTypes = {
   message: PropTypes.object,
 };

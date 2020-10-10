@@ -6,13 +6,8 @@ import Contact from "./Contact";
 import SkeletonContact from "./SkeletonContact";
 
 function Sidebar() {
-  /**
-   * Хук редакса
-   */
   const dispatch = useDispatch();
-  /**
-   * Загрузка контактов вместе с загрузкой компонента
-   */
+
   useEffect(() => {
     dispatch(loadContacts());
   }, [dispatch]);
@@ -31,9 +26,6 @@ function Sidebar() {
     });
   });
 
-  /**
-   * Состояние звагрузки данных
-   */
   const loading = useSelector((state) => state.contacts.loading);
 
   return (

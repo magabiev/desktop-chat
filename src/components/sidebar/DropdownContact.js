@@ -16,9 +16,7 @@ function DropdownContact() {
     e.stopPropagation();
     setShow(!show);
   };
-  /**
-   * Скрытие всплывающего меню
-   */
+
   const hideDropdown = () => {
     setShow(false);
   };
@@ -38,10 +36,6 @@ function DropdownContact() {
   );
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- * @type {{contactId: Requireable<string>}}
- */
 DropdownContact.propTypes = {
   contactId: PropTypes.string,
 };

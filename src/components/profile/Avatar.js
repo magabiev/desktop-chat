@@ -22,19 +22,12 @@ function Avatar({ size, name, online }) {
   );
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- * @type {{size: Requireable<string>, name: Requireable<string>, online: Requireable<boolean>}}
- */
 Avatar.propTypes = {
   size: PropTypes.string,
   online: PropTypes.bool,
   name: PropTypes.string.isRequired,
 };
 
-/**
- * Задание значений по умолчанию для пропсов
- */
 Avatar.defaultProps = {
   name: "Name",
   size: "medium",

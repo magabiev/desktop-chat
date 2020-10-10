@@ -11,9 +11,6 @@ import { useParams } from "react-router-dom";
 function ProfileContact() {
   const dispatch = useDispatch();
 
-  /**
-   * Id кликнутого контакта
-   */
   const opened = useParams().id;
 
   /**
@@ -32,9 +29,6 @@ function ProfileContact() {
     })
   );
 
-  /**
-   * Данные о загрузке профиля
-   */
   const loading = useSelector((state) => state.contacts.loading);
 
   /**
@@ -60,12 +54,12 @@ function ProfileContact() {
   return (
     <div className={openProfile ? "profile-parent-open" : "profile-parent"}>
       <div className="profile-info">
-        <Avatar size={"large"} name={profile.fullname} />
-        <div className="profile-name">{profile.fullname}</div>
-        <div className="nickname">@{profile.username}</div>
+        <Avatar size={"large"} name={profile?.fullname} />
+        <div className="profile-name">{profile?.fullname}</div>
+        <div className="nickname">@{profile?.username}</div>
         <Communications />
       </div>
-      <Social socials={profile.socials} />
+      <Social socials={profile?.socials} />
       <Media fileName={"filename.pdf"} />
     </div>
   );

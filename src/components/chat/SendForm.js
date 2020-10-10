@@ -12,21 +12,13 @@ function SendForm() {
    * Значение поля ввода
    */
   const [content, setContent] = useState("");
-  /**
-   * Хук редакса
-   */
+
   const dispatch = useDispatch();
-  /**
-   * Данные о myId
-   */
+
   const myId = useSelector((state) => state.profile.myId);
-  /**
-   * Id кликнутого контакта
-   */
+
   const opened = useParams().id;
-  /**
-   * Отправка сообщения
-   */
+
   const sendMessage = useCallback(() => {
     if (content.length !== 0) {
       dispatch(sentMessage(myId, opened, content));
@@ -39,9 +31,7 @@ function SendForm() {
   const handleChange = (e) => {
     setContent(e.target.value);
   };
-  /**
-   * Очистка поля ввода
-   */
+
   const clear = () => {
     setContent("");
   };
@@ -54,9 +44,6 @@ function SendForm() {
     setContent((content) => content + "\n");
   });
 
-  /**
-   * Отправка сообщения при клике на Enter
-   */
   useHotkeys(
     "enter",
     (e) => {

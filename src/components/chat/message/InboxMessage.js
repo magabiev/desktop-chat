@@ -6,9 +6,6 @@ import { useParams } from "react-router-dom";
 import dayjs from "dayjs";
 
 function InboxMessage({ message }) {
-  /**
-   * Id кликнутого контакта
-   */
   const opened = useParams().id;
   /**
    * Данные о профиле кликнутого контакта
@@ -21,7 +18,7 @@ function InboxMessage({ message }) {
 
   return (
     <div className="message-block margin">
-      <Avatar size="small" name={fullname} />
+      <Avatar size="small" name={fullname && fullname} />
       <div className="message">
         {message.content}
         <div className="date">

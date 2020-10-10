@@ -13,10 +13,6 @@ function CheckRead({ read }) {
   );
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- * @type {{read: Requireable<boolean>}}
- */
 CheckRead.propTypes = {
   read: PropTypes.bool,
 };

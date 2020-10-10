@@ -9,10 +9,6 @@ function DropdownItem({ action, children }) {
   );
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- * @type {{action: Requireable<(...args: any[]) => any>}}
- */
 DropdownItem.propTypes = {
   action: PropTypes.func,
 };

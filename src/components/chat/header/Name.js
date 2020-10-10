@@ -12,18 +12,11 @@ function Name({ name, online }) {
   );
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- * @type {name: Requireable<string>, online: Requireable<boolean>}}
- */
 Name.propTypes = {
   name: PropTypes.string,
   online: PropTypes.bool,
 };
 
-/**
- * Задание значений по умолчанию для пропсов
- */
 Name.defaultProps = {
   name: "Name Lastname",
   online: false,

@@ -16,9 +16,6 @@ function SendButtons({ hasMessage, onSend }) {
   );
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- */
 SendButtons.propTypes = {
   hasMessage: PropTypes.bool,
   onSend: PropTypes.func.isRequired,

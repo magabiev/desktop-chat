@@ -19,10 +19,6 @@ function Social({ socials }) {
   );
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- * @type {{socials: Requireable<object>}}
- */
 Social.propTypes = {
   socials: PropTypes.object,
 };

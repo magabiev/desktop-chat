@@ -13,21 +13,17 @@ function Contact({ contact: { _id, fullname, lastMessage, online } }) {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  /**
-   * Id кликнутого контакта
-   */
+
   const opened = useParams().id;
 
-  /**
-   * Данные о myId
-   */
   const myId = useSelector((state) => state.profile.myId);
 
-  /**
-   * Передача нужного id  и получение его сообщений и получение профиля контакта
-   */
+  const isAlreadyOpenedContact = () => {
+    return _id === opened;
+  };
+
   const handleClickContact = () => {
-    if (_id !== opened) {
+    if (!isAlreadyOpenedContact()) {
       dispatch(loadMessages(myId, _id));
       history.push(_id);
     }
@@ -64,9 +60,6 @@ function Contact({ contact: { _id, fullname, lastMessage, online } }) {
   );
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- */
 Contact.propTypes = { contact: PropTypes.object };
 
 export default Contact;

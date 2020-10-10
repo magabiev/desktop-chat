@@ -15,17 +15,10 @@ function Media({ fileName }) {
   );
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- * @type {{fileName: Requireable<string>}}
- */
 Media.propTypes = {
   fileName: PropTypes.string,
 };
 
-/**
- * Задание значений по умолчанию для пропсов
- */
 Media.defaultProps = {
   fileName: "fileName",
 };

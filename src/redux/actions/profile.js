@@ -5,7 +5,7 @@
 export function loadMyId() {
   return (dispatch) => {
     dispatch({ type: "myProfile/load/started" });
-    fetch("http://151.248.117.7:8001/api/profile")
+    fetch("https://api.intocode.ru:8001/api/profile")
       .then((response) => response.json())
       .then((json) =>
         dispatch({

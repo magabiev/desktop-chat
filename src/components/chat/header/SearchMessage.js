@@ -7,32 +7,21 @@ import {
 
 function SearchMessage() {
   const dispatch = useDispatch();
-  /**
-   * Открытие и закрытие поисковика сообщений
-   */
+
   const searchOpenToggle = () => {
     dispatch(searchOpened());
   };
-  /**
-   * Значение поля ввода
-   */
+
   const searchValue = useSelector((state) => state.application.searchValue);
-  /**
-   * Передача данных из поля ввода
-   * @param e
-   */
+
   const handleChange = (e) => {
     dispatch(searchMessages(e.target.value));
   };
-  /**
-   * Очистка поля ввода
-   */
+
   const clearSearch = () => {
     dispatch(searchMessages(""));
   };
-  /**
-   * Состояние открытия поисковика
-   */
+
   const searchOpen = useSelector((state) => state.application.searchOpen);
 
   return (

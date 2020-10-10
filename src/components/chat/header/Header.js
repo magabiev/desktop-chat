@@ -8,17 +8,10 @@ import { profileToggled } from "../../../redux/actions/application";
 import { useParams } from "react-router-dom";
 
 function Header() {
-  /**
-   * Id кликнутого контакта
-   */
   const opened = useParams().id;
-  /**
-   * Хук редакса
-   */
+
   const dispatch = useDispatch();
-  /**
-   * Состояние загрузки сообщений
-   */
+
   const loading = useSelector((state) => state.chat.loading);
   /**
    * Функция открытия и закрытия окна профиля

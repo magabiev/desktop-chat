@@ -9,16 +9,10 @@ import { loadMyId } from "../redux/actions/profile";
 function App() {
   const dispatch = useDispatch();
 
-  /**
-   * Загрузка id вместе с загрузкой компонента
-   */
   useEffect(() => {
     dispatch(loadMyId());
   }, [dispatch]);
 
-  /**
-   * Состояние загрузки данных профиля
-   */
   const loadingMyId = useSelector((state) => state.profile.loadingMyId);
 
   return (

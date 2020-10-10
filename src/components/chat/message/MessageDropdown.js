@@ -9,9 +9,7 @@ import { deletedMessage } from "../../../redux/actions/chat";
 
 function MessageDropdown({ messageId }) {
   const dispatch = useDispatch();
-  /**
-   * Состояние открытия или закрытия меню
-   */
+
   const [show, setShow] = useState(false);
   /**
    * Открытие и закрытие выпадающего меню
@@ -19,9 +17,7 @@ function MessageDropdown({ messageId }) {
   const handleClickDropIcon = () => {
     setShow(!show);
   };
-  /**
-   * Удаление сообщения
-   */
+
   const deleteMessage = () => {
     dispatch(deletedMessage(messageId));
   };
@@ -33,9 +29,6 @@ function MessageDropdown({ messageId }) {
     "dropdown-icon": show,
   });
 
-  /**
-   * Скрытие всплывающего меню
-   */
   const hideDropdown = () => {
     setShow(false);
   };

@@ -22,20 +22,14 @@ function Chat() {
       );
     });
   });
-  /**
-   * Данные о myId
-   */
+
   const myId = useSelector((state) => state.profile.myId);
-  /**
-   * Состояние загрузки сообщений
-   */
+
   const loading = useSelector((state) => state.chat.loading);
-  /**
-   * Id кликнутого контакта
-   */
+
   const opened = useParams().id;
   /**
-   * Загрузка чата открытого контакта
+   * Загрузка чата в соответствии с id кликнутого  контакта
    */
   useEffect(() => {
     if (opened) {
@@ -52,8 +46,8 @@ function Chat() {
       <Header />
       <div className="chat-block" id="chat-window">
         {!loading &&
-          items.map((message) => {
-            return <Message key={message._id} message={message} />;
+          items.map((message, index) => {
+            return <Message key={index} message={message} />;
           })}
       </div>
       <div className="parent-form">

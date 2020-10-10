@@ -21,10 +21,6 @@ function Dropdown({ children, type, isShow }) {
   return <div></div>;
 }
 
-/**
- * Объявление пропса на соответствие определённому JS-типу.
- * @type {{type: Requireable<string>}}
- */
 Dropdown.propTypes = {
   type: PropTypes.string,
   isShow: PropTypes.bool,

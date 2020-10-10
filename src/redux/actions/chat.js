@@ -9,7 +9,7 @@ import { scrollChatDown } from "../../utils/dom";
 export function loadMessages(myId, contactId) {
   return (dispatch) => {
     dispatch({ type: "chat/load/started", payload: contactId });
-    fetch(`http://151.248.117.7:8001/api/messages/${myId}/${contactId}`)
+    fetch(`https://api.intocode.ru:8001/api/messages/${myId}/${contactId}`)
       .then((response) => response.json())
       .then((json) => {
         dispatch({
@@ -44,7 +44,7 @@ export function sentMessage(myId, contactId, content) {
       })
     );
 
-    fetch("http://151.248.117.7:8001/api/messages", {
+    fetch("https://api.intocode.ru:8001/api/messages", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -80,7 +80,7 @@ export function deletedMessage(messageId) {
       type: "message/delete/started",
       payload: messageId,
     });
-    fetch("http://151.248.117.7:8001/api/messages", {
+    fetch("https://api.intocode.ru:8001/api/messages", {
       method: "DELETE",
       headers: {
         Accept: "application/json",
