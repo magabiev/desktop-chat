@@ -24,7 +24,7 @@ function SendForm() {
       dispatch(sentMessage(myId, opened, content));
       clear();
     }
-  }, [content, opened, myId]);
+  }, [content, dispatch, myId, opened]);
   /**
    * Передача значения поля ввода в редакс
    */
