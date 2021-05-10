@@ -1,4 +1,4 @@
-[DEMO](https://salty-hollows-06987.herokuapp.com/)
+[DEMO](https://desktop-chat-qqqefgcf1-maagaa14011999-gmailcom.vercel.app/)
 # Десктопный чат
 
 ### Основной функционал приложения: 
